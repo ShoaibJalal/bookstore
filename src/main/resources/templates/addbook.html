@@ -5,32 +5,64 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+	<div class="container">
 	<h1>Add Book</h1>
-	<div>
-		<form th:object="${book}" th:action="@{save}" action="#" method="post">
-		  	<label for="aName">Author</label>
-			<input type="text" id="aName" th:field="*{author}" />
+		<form class="form-horizontal" th:object="${book}" th:action="@{save}" action="#" method="post">
+		
+			<div class="form-group">
+		  		<label class="control-label col-sm-2" for="aName">Author</label>
+		  	<div class="col-sm-10">
+				<input class="form-control" type="text" id="aName" th:field="*{author}" />
+			</div>
+			</div>
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="tName">Title</label>
-			<input type="text" id="tName" th:field="*{title}" />
+		  	
+		  	<div class="form-group">
+		  		<label class="control-label col-sm-2" for="tName">Title</label>
+		  	<div class="col-sm-10">
+				<input class="form-control" type="text" id="tName" th:field="*{title}" />
+			</div>
+			</div>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="ISBN">ISBN</label>
-			<input type="text" id="isbn" th:field="*{isbn}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="year">Year</label>
-			<input type="text" id="year" th:field="*{year}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="price">Price</label>
-			<input type="text" id="price" th:field="*{price}" />
 			
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="ISBN">ISBN</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="isbn" th:field="*{isbn}" />
+			</div>
+			</div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="year">Year</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="year" th:field="*{year}" />
+			</div>
+			</div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="price">Price</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="price" th:field="*{price}" />
+			</div>
+			</div>
 			<div style="clear: both; display: block; height: 10px;"></div>						
-		  	<label for="catlist">Category</label>
-			 <select id="catlist" th:field="*{category}" class="form-control">
+		  	
+		  	<div class="form-group">
+		  		<label for="catlist">Category</label>
+			 	<select class="form-control" id="catlist" th:field="*{category}">
        			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
-    		</select>
-			
+    			</select>
+			</div>
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  				<input type="submit" value="Save"></input>
+		  				
+		  	<div class="form-group">
+		  		<div class="col-sm-offset-2 col-sm-10">
+		  			<input class="form-control" type="submit" value="Save"></input>
+		  		</div>
+			</div>
 		</form>
 	</div>
 </body>
