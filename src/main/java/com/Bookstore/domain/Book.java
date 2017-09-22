@@ -1,9 +1,14 @@
 package com.Bookstore.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.Bookstore.domain.Category;;
 
 @Entity
 
@@ -19,11 +24,16 @@ public class Book {
 	private int isbn;
 	private double price;
 	
+	@ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
+	
 	public Book(){
 		
 	}
 public Book( String title, String author, int year, int isbn){
 		
+		super();
 		this.title = title;
 		this.author = author;
 		this.year = year;
@@ -33,7 +43,7 @@ public Book( String title, String author, int year, int isbn){
 	}
 	
 	public Book( String title, String author, int year, int isbn, double price){
-		
+		super();
 		this.title = title;
 		this.author = author;
 		this.year = year;
@@ -79,9 +89,18 @@ public Book( String title, String author, int year, int isbn){
 		this.price = price;
 	}
 	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	@Override
 	public String toString(){
-		return title + " " + author + " " + year + " " + isbn + " " + price ;
+		if(this.category != null)
+			return title + " " + author + " " + year + " " + isbn + " " + price + this.getCategory() ;
+		else
+			return title + " " + author + " " + year + " " + isbn + " " + price ;
 	}
 	
 
