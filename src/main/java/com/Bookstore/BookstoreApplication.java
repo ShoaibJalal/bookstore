@@ -24,14 +24,14 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository crepository) {
 		return (args) -> {
-			log.info("saving few books ");
+			log.info("saving few categories ");
 			crepository.save(new Category("Programming"));
 			crepository.save(new Category("Business"));
 			crepository.save(new Category("Arts"));
 			crepository.save(new Category("Fiction"));
 			
-			//repository.save(new Book("Ernest Hemingway","A Farewell to Arms",1232323,1929,34.00));
-			//repository.save(new Book("George Orwell","Animal Farm",2212343,1945,34.00));	
+			repository.save(new Book("Ernest Hemingway","A Farewell to Arms",1232323,1929,34.00,crepository.findByName("Programming").get(0)));
+			repository.save(new Book("George Orwell","Animal Farm",2212343,1945,34.00,crepository.findByName("Business").get(0)));	
 			
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
