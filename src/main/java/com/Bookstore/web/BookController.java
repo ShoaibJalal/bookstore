@@ -3,6 +3,7 @@ package com.Bookstore.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,12 @@ public class BookController {
 	
 	@Autowired
 	private CategoryRepository crepository;
+	
+	//ask for login and then show the books
+	@RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
 	
 	//Will Show all books in database
     @RequestMapping(value="/booklist")
@@ -42,6 +49,7 @@ public class BookController {
     } 
     
     //Will add new book to database
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/add")
     public String addBook(Model model){
     	model.addAttribute("book", new Book());

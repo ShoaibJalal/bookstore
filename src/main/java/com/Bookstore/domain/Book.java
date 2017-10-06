@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import com.Bookstore.domain.Category;;
+import com.Bookstore.domain.Category;
 
 @Entity
 
