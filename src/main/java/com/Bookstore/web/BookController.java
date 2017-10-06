@@ -50,7 +50,7 @@ public class BookController {
     
     //Will add new book to database
     @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/addbook")
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
     	model.addAttribute("categories",crepository.findAll());
